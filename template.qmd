@@ -188,7 +188,7 @@ df_climatology = combine(df_bymonth, :lsl => mean => :lsl_avg);
 plot(
     df_climatology.month,
     df_climatology.lsl_avg;
-    xticks=1:1116,
+    xticks=1:1128,
     xlabel="Month",
     ylabel="Average Water level",
     linewidth=3,
@@ -197,9 +197,26 @@ plot(
 ```
 
 ```{julia}
-last(df, 3)
+df[!, :day] = (Dates.dayofyear.(df.datetime))
+dropmissing!(df, :lsl)
+df_byday = groupby(df, :day)
+df_climatology = combine(df_byday, :lsl => mean => :lsl_avg);
+
+plot(
+    df_climatology.day,
+    df_climatology.lsl_avg;
+    xticks=1:366,
+    xlabel="Day",
+    ylabel="Average Water level",
+    linewidth=3,
+    label=false,
+)
 ```
 
 ```{julia}
 first(df, 3)
+```
+
+```{julia}
+last(df, 3)
 ```
