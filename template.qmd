@@ -188,7 +188,7 @@ df_climatology = combine(df_bymonth, :lsl => mean => :lsl_avg);
 plot(
     df_climatology.month,
     df_climatology.lsl_avg;
-    xticks=1:1128,
+    xticks=1:12,
     xlabel="Month",
     ylabel="Average Water level",
     linewidth=3,
@@ -206,18 +206,10 @@ plot(
     df_climatology.day,
     df_climatology.lsl_avg;
     xticks=1:366,
-    scatter(....., xticks=0:40:360, ....)
     xlabel="Day",
     ylabel="Average Water level",
     linewidth=3,
     label=false,
 )
-```
-
-```{julia}
-first(df, 3)
-```
-
-```{julia}
-last(df, 3)
+#It produces a graph that has much more variation than the one grouped by months, which has very smooth lines.
 ```
