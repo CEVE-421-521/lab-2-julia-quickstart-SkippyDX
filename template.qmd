@@ -175,6 +175,7 @@ plot(
     df_month.lsl;
     title="Water levels at Sewells Point, VA",
     ylabel="Water level",
+    xlabel="Date",
     label=false,
 )
 ```
