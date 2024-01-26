@@ -206,6 +206,7 @@ plot(
     df_climatology.day,
     df_climatology.lsl_avg;
     xticks=1:366,
+    scatter(....., xticks=0:40:360, ....)
     xlabel="Day",
     ylabel="Average Water level",
     linewidth=3,
